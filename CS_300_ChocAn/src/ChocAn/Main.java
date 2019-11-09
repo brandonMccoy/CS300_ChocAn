@@ -33,6 +33,8 @@ public class Main {
 		provider.Print();
 		
 		// Load Consultation object with data
+		consul.currentDateTime = LocalDateTime.now();
+		consul.serviceDate = LocalDate.now();
 		consul.memberNumber = "720037";
 		consul.serviceCode = "000009";
 		consul.fee = "222.2";
