@@ -1,6 +1,11 @@
 package ChocAn;
 
 import java.io.IOException;
+import ChocAn.Member;// needed for Member.Status enum 
+
+/* NOTE:
+ * When being returned an object (type Model), if the id equals -1, then the object does not exist in any database
+ */
 
 public class View {
 	
