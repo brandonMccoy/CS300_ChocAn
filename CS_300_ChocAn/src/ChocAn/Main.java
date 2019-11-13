@@ -7,16 +7,14 @@ import ChocAn.Model.Action;
 
 public class Main {
 
-	
-	
 	public static void main(String[] args) {
 		
 		//View.TerminalChoice();
 		
-		
 		Member member = new Member();
 		Provider provider = new Provider();
 		Consultation consul = new Consultation();
+		Service service = new Service();
 		
 		// Load member object with data
 		member.id = 720037;
