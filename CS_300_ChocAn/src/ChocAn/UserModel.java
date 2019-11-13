@@ -1,13 +1,22 @@
 package ChocAn;
 
-public abstract class UserModel implements Model {
+public class UserModel implements Model {
 
-	public int id;
+	public int id;// id cannot start with 0
 	public String name;
 	public String street;
 	public String city;
 	public String state;
 	public int zip;
+	
+	UserModel(){
+		id = -1;
+		name = "";
+		street = "";
+		city = "";
+		state = "";
+		zip = -1;
+	}
 	
 	@Override
 	public void Print() {
@@ -17,5 +26,16 @@ public abstract class UserModel implements Model {
 		System.out.println("   City: " + city);
 		System.out.println("  State: " + state);
 		System.out.println("    Zip: " + zip);
+	}
+
+	@Override
+	public Boolean Database(Action action) {
+		return true;
+	}
+	
+	@Override
+	public Model Get(int id) {
+		// search database for matching model
+		return null;
 	}
 }

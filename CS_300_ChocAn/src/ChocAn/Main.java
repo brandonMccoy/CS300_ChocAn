@@ -1,17 +1,20 @@
 package ChocAn;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import ChocAn.Model.Action;
+
 public class Main {
 
-	
-	
 	public static void main(String[] args) {
 		
 		//View.TerminalChoice();
 		
-		
 		Member member = new Member();
 		Provider provider = new Provider();
 		Consultation consul = new Consultation();
+		Service service = new Service();
 		
 		// Load member object with data
 		member.id = 720037;
@@ -22,6 +25,7 @@ public class Main {
 		member.zip = 97214;
 		member.suspended = true;
 		member.Print();
+		member.Database(Action.ADD);
 		
 		// Load member object with data
 		provider.id = 826347;
