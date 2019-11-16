@@ -8,11 +8,13 @@ import java.util.List;
 public class Consultation implements Model {
 	
 	public int id;
-	// Set automatically when Consultation record is saved
-    // yyyy-MM-dd-HH-mm-ss.zzz
+	
+	/**Set automatically when Consultation record is saved
+	 * yyyy-MM-dd-HH-mm-ss.zzz
+	 */
 	public LocalDateTime currentDateTime;
 
-    // yyyy-MM-dd
+    /**YYYY-MM-DD*/
 	public LocalDate serviceDate;
     public int memberNumber;
     public int serviceCode;
@@ -20,7 +22,7 @@ public class Consultation implements Model {
     public String memberName;
     public int providerNumber;
     public String comment;
-    
+
     Consultation(){
     	id = -1;
     	currentDateTime = LocalDateTime.now();
@@ -33,6 +35,13 @@ public class Consultation implements Model {
         comment = "";
     }
 
+    /**Add, Delete, or Update this Consultation in the database. Or check to see if 
+	 * this Consultation is already in the database.
+	 * @param action tells the method whether to add, delete, update, or check 
+	 * if the Consultation is in the database.
+	 * @return Depending on the argument, returns true if Consultation is 
+	 * successfully added, deleted, updated, or found in the Consultation database.
+	 */
 	@Override
 	public Boolean Database(Action action) {
 		Boolean response = false;
@@ -48,17 +57,26 @@ public class Consultation implements Model {
 		return response;
 	}
 	
-	// Returns a copy of the consultation with a matching id from the database
+	/**Searches the Consultation database for an object with a matching id.
+	 * @param id of Consultation to find in the database
+	 * @return A copy of the Consultation in the database that matches the id arg. 
+	 * If a match is not found, an empty Consultation is returned with id = -1.
+	 */
 	@Override
 	public Consultation Get(int id) {
 		return db.GetConsultation(id);
 	}
-	
-	/// Returns an unmodifiable list of all consultations in the consultationDB database
+
+	/**
+	 * @return An unmodifiable list of all consultations in the consultationDB database
+	 */
 	public List<Consultation> GetAll(){
 		return db.AllConsultations();
 	}
-	
+
+	/**Prints all Consultation variables to the console, 
+	 * formatting specific to a Consultation type.
+	 */
 	@Override
 	public void Print()
 	{
@@ -79,3 +97,4 @@ public class Consultation implements Model {
 			System.out.println("Comment: " + comment);
 	}
 }
+

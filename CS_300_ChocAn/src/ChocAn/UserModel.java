@@ -7,7 +7,7 @@ public class UserModel implements Model {
 	public String street;
 	public String city;
 	public String state;
-	public int zip;
+	public String zip;
 	
 	UserModel(){
 		id = -1;
