@@ -18,14 +18,13 @@ public class Database {
 	 * @return 
 	 */
 	Database(){
-		// Fill memberDB with seed data
-		Member member = new Member();
-		memberDB.add(member);
-		// Fill providerDB with seed data
+		// Fill memberDB with member file data
+
+		// Fill providerDB with provider file data
 		
-		// Fill Service list with names and corresponding codes
+		// Fill Service list with names and corresponding codes from a file
 		
-		// Fill ConsulLog with seed member visit data
+		// Fill consultationDB with file data
 	}
 	
 	/// Member Database ///////////////////////////////////////////////////////
