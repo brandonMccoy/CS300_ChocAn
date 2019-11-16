@@ -1,8 +1,7 @@
 package ChocAn;
 
 import java.io.IOException;
-import ChocAn.Member;// needed for Member.Status enum 
-
+import ChocAn.Controller.Status;// needed for Controller enum Status {INVALID, VALID, SUSPENDED}
 /* NOTE:
  * When being returned an object (type Model), if the id equals -1, then the object does not exist in any database
  */
