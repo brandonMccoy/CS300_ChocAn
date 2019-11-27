@@ -15,7 +15,7 @@ public class UserModel implements Model {
 		street = "";
 		city = "";
 		state = "";
-		zip = -1;
+		zip = "";
 	}
 	
 	@Override
