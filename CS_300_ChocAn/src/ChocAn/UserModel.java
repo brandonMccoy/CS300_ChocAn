@@ -1,6 +1,6 @@
 package ChocAn;
 
-public class UserModel implements Model {
+public class UserModel implements IModel {
 
 	public int id;// id cannot start with 0
 	public String name;
@@ -34,7 +34,7 @@ public class UserModel implements Model {
 	}
 	
 	@Override
-	public Model Get(int id) {
+	public IModel Get(int id) {
 		// search database for matching model
 		return null;
 	}
