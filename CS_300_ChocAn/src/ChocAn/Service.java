@@ -2,7 +2,7 @@ package ChocAn;
 
 import java.util.List;
 
-public class Service implements Model {
+public class Service implements IModel {
 	
 	public int code;
 	public String name;

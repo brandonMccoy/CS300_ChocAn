@@ -1,6 +1,6 @@
 package ChocAn;
 
-import ChocAn.Model.Action;
+import ChocAn.IModel.Action;
 
 import java.time.LocalDate;
 import java.util.List;
