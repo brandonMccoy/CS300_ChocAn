@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class Consultation implements Model {
+public class Consultation implements IModel {
 	
 	public int id;
 	
