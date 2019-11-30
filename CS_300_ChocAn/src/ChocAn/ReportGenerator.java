@@ -13,7 +13,7 @@ public class ReportGenerator {
 	
 	// Output stream needs to be thought out more
 	// I wasn't clear what to do with Model user arg
-	public static void GenerateReport(ReportType type, OutputStream dest, Model user)
+	public static void GenerateReport(ReportType type, OutputStream dest, IModel user)
 	{
 		switch (type) {
 		case ALL:
