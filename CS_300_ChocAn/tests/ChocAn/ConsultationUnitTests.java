@@ -16,7 +16,7 @@ class ConsultationUnitTests {
 	Consultation testConsultation;
 	
 	@BeforeEach
-	void beforeEach() {
+	void setUp() throws Exception {
 		testConsultation = new Consultation();
 		testConsultation.id = 123456;
 		testConsultation.memberNumber = 234567;
@@ -28,7 +28,7 @@ class ConsultationUnitTests {
 	}
 	
 	@AfterEach
-	void afterEach() {
+	void tearDown() throws Exception {
 		testConsultation = null;
 	}
 	
