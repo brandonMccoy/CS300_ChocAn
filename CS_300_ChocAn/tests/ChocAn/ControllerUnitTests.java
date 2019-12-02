@@ -1,5 +1,6 @@
 package ChocAn;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
@@ -7,9 +8,23 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ControllerUnitTests {
+	
+	// test member information, initialized in the setUp method
+	public int id;
+	public String name;
+	public String street;
+	public String city;
+	public String state;
+	public String zip;
 
 	@BeforeEach
 	void setUp() throws Exception {
+		id = 1234567;
+		name = "John Doe";
+		street = "1234 Main St";
+		city = "Portland";
+		state = "Oregon";
+		zip = "12345";
 	}
 
 	@AfterEach
@@ -17,8 +32,9 @@ class ControllerUnitTests {
 	}
 
 	@Test
-	void testCreateMember() {
-		fail("Not yet implemented");
+	void testCreateMemberWithCorrectInput() {
+		Boolean result = Controller.CreateMember(id, name, street, city, state, zip);
+		assertTrue("Member not created", result);
 	}
 
 	@Test
