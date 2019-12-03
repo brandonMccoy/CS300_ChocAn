@@ -14,12 +14,14 @@ import ChocAn.IModel.Action;
 class ServiceTest {
 
 	Service testService;
+	final int testCode = 124567;
+	final String testName = "Back fixer";
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		testService = new Service();
-		testService.code = 123456;
-		testService.name = "Back breaker, then fixer";
+		testService.code = testCode;
+		testService.name = testName;
 	}
 	
 	@AfterEach
@@ -35,9 +37,9 @@ class ServiceTest {
 	
 	@Test
 	void testAddToDatabase() {
-		Service newService = new Service();
-		boolean result = newService.Database(Action.ADD);
+		boolean result = testService.Database(Action.ADD);
 		assertEquals("Service not added", true, result);
+		testService.Database(Action.DELETE);
 	}
 	
 	@Test
@@ -52,6 +54,7 @@ class ServiceTest {
 		testService.Database(Action.ADD);
 		Service result = testService.Get(testService.code);
 		assertEquals("Could not retrieve Service", testService.code, result.code);
+		testService.Database(Action.DELETE);
 	}
 
 	@Test
@@ -63,11 +66,19 @@ class ServiceTest {
 	
 	@Test
 	void testGetServiceName() {
-		
+		testService.Database(Action.ADD);
+		Service newService = new Service();
+		String serviceName = newService.GetServiceName(testService.code);
+		assertEquals("Get service name failed", testName, serviceName);
+		testService.Database(Action.DELETE);
 	}
 	
 	@Test
 	void testGetServiceCode() {
-		
+		testService.Database(Action.ADD);
+		Service newService = new Service();
+		int serviceCode = newService.GetServiceCode(testService.name);
+		assertEquals("Get service code failed", testCode, serviceCode);
+		testService.Database(Action.DELETE);
 	}
 }
