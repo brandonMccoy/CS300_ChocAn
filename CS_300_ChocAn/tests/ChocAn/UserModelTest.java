@@ -1,9 +1,6 @@
 package ChocAn;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-
-import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +29,7 @@ class UserModelTest {
 	@Test
 	void testConstructor() {
 		UserModel newUserModel = new UserModel();
-		asserNotNull("UserModel constructor failed",newUserModel);
+		assertNotNull("UserModel constructor failed",newUserModel);
 	}
 
 }
