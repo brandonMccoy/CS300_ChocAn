@@ -6,6 +6,11 @@ public class Service implements IModel {
 	
 	public int code;
 	public String name;
+	
+	public Service() {
+		code = -1;
+		name = "name";
+	}
 
 	/**Add, Delete, or Update this Service in the database. Or check to see if 
 	 * this Service is already in the database.
