@@ -40,9 +40,9 @@ class MemberTest {
 
 	@Test
 	void testAddToDatabase() {
-		Member c = new Member();
-		boolean result = c.Database(Action.ADD);
+		boolean result = testMember.Database(Action.ADD);
 		assertEquals("Member not added", true, result);
+		testMember.Database(Action.DELETE);
 	}
 	
 	@Test
@@ -57,6 +57,7 @@ class MemberTest {
 		testMember.Database(Action.ADD);
 		Member result = testMember.Get(testMember.id);
 		assertEquals("Could not retrieve Member", testMember.id, result.id);
+		testMember.Database(Action.DELETE);
 	}
 
 	@Test
@@ -71,8 +72,8 @@ class MemberTest {
 		testMember.SetSuspension(true);
 		assertEquals("Member SetSuspension failed", true, testMember.isSuspended);
 		testMember.Database(Action.ADD);
-		assertEquals("Member Update failed", true, testMember.Database(Action.UPDATE));
 		assertEquals("Member SetSuspension failed", true, testMember.Get(testMember.id).isSuspended);
+		testMember.Database(Action.DELETE);
 	}
 
 	@Test
