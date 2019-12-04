@@ -43,6 +43,7 @@ class ConsultationUnitTests {
 		Consultation c = new Consultation();
 		boolean result = c.Database(Action.ADD);
 		assertEquals("Consultation not added", true, result);
+		c.Database(Action.DELETE);
 	}
 	
 	@Test
@@ -57,6 +58,7 @@ class ConsultationUnitTests {
 		testConsultation.Database(Action.ADD);
 		Consultation result = testConsultation.Get(testConsultation.id);
 		assertEquals("Could not retrieve consultation", testConsultation, result);
+		testConsultation.Database(Action.DELETE);
 	}
 
 	@Test

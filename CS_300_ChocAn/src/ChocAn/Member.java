@@ -54,6 +54,7 @@ public class Member extends UserModel {
 	 * @param status Set member isSuspended equal to status.
 	 */
 	public void SetSuspension(Boolean status) {
+		isSuspended = status;
 		db.SetMemberSuspension(id, status);
 	}
 	
