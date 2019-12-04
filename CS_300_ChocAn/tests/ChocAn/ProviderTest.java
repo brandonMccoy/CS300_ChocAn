@@ -42,6 +42,7 @@ class ProviderTest {
 		Provider c = new Provider();
 		boolean result = c.Database(Action.ADD);
 		assertEquals("Provider not added", true, result);
+		testProvider.Database(Action.DELETE);
 	}
 	
 	@Test
@@ -56,6 +57,7 @@ class ProviderTest {
 		testProvider.Database(Action.ADD);
 		Provider result = testProvider.Get(testProvider.id);
 		assertEquals("Could not retrieve Provider", testProvider.id, result.id);
+		testProvider.Database(Action.DELETE);
 	}
 
 	@Test
