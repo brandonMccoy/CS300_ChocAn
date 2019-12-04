@@ -23,11 +23,11 @@ public class Controller {
 	public static Boolean CreateMember(int id, String name, String street, String city, String state, String zip) {
 		Member member = new Member();
 		member.id = id;
-		member.name = name;
-		member.street = street;
-		member.city = city;
-		member.state = state;
-		member.zip = zip;
+		member.name = PrepString(name);
+		member.street = PrepString(street);
+		member.city = PrepString(city);
+		member.state = PrepString(state);
+		member.zip = PrepString(zip);
 		return member.Database(Action.ADD);
 	}
 	
@@ -54,11 +54,11 @@ public class Controller {
 	public static Boolean UpdateMember(int id, String name, String street, String city, String state, String zip) {
 		Member member = new Member();
 		member.id = id;
-		member.name = name;
-		member.street = street;
-		member.city = city;
-		member.state = state;
-		member.zip = zip;
+		member.name = PrepString(name);
+		member.street = PrepString(street);
+		member.city = PrepString(city);
+		member.state = PrepString(state);
+		member.zip = PrepString(zip);
 		return member.Database(Action.UPDATE);
 	}
 	
@@ -121,11 +121,11 @@ public class Controller {
 	public static Boolean CreateProvider(int id, String name, String street, String city, String state, String zip) {
 		Provider provider = new Provider();
 		provider.id = id;
-		provider.name = name;
-		provider.street = street;
-		provider.city = city;
-		provider.state = state;
-		provider.zip = zip;
+		provider.name = PrepString(name);
+		provider.street = PrepString(street);
+		provider.city = PrepString(city);
+		provider.state = PrepString(state);
+		provider.zip = PrepString(zip);
 		return provider.Database(Action.ADD);
 	}
 	
@@ -152,11 +152,11 @@ public class Controller {
 	public static Boolean UpdateProvider(int id, String name, String street, String city, String state, String zip) {
 		Provider provider = new Provider();
 		provider.id = id;
-		provider.name = name;
-		provider.street = street;
-		provider.city = city;
-		provider.state = state;
-		provider.zip = zip;
+		provider.name = PrepString(name);
+		provider.street = PrepString(street);
+		provider.city = PrepString(city);
+		provider.state = PrepString(state);
+		provider.zip = PrepString(zip);
 		return provider.Database(Action.UPDATE);
 	}
 	
@@ -197,11 +197,11 @@ public class Controller {
 		consultation.id = id;
 		consultation.serviceDate = serviceDate;
 		consultation.memberNumber = memberNumber;
-		consultation.memberName = memberName;
+		consultation.memberName = PrepString(memberName);
 		consultation.serviceCode = serviceCode;
-		consultation.fee = fee;
+		consultation.fee = PrepString(fee);
 		consultation.providerNumber = providerNumber;
-		consultation.comment = comment;
+		consultation.comment = PrepString(comment);
 		return consultation.Database(Action.ADD);
 	}
 		
@@ -234,11 +234,11 @@ public class Controller {
 		consultation.id = id;
 		consultation.serviceDate = serviceDate;
 		consultation.memberNumber = memberNumber;
-		consultation.memberName = memberName;
+		consultation.memberName = PrepString(memberName);
 		consultation.serviceCode = serviceCode;
-		consultation.fee = fee;
+		consultation.fee = PrepString(fee);
 		consultation.providerNumber = providerNumber;
-		consultation.comment = comment;
+		consultation.comment = PrepString(comment);
 		return consultation.Database(Action.UPDATE);
 	}
 	
@@ -260,7 +260,7 @@ public class Controller {
 	public static Boolean CreateService(int code, String name) {
 		Service service = new Service();
 		service.code = code;
-		service.name = name;
+		service.name = PrepString(name);
 		return service.Database(Action.ADD);
 	}
 			
@@ -283,7 +283,7 @@ public class Controller {
 	public static Boolean UpdateService(int code, String name) {
 		Service service = new Service();
 		service.code = code;
-		service.name = name;
+		service.name = PrepString(name);
 		return service.Database(Action.UPDATE);
 	}
 	
@@ -311,5 +311,11 @@ public class Controller {
 	public static int GetServiceCode(String name) {
 		Service service = new Service();
 		return service.GetServiceCode(name);
+	}
+	
+	private static String PrepString(String str) {
+		String newString = str;
+		newString = newString.replaceAll("[^a-zA-Z0-9\\s+]", "");
+		return newString;
 	}
 }
