@@ -236,7 +236,7 @@ public class Controller {
 		consultation.memberNumber = memberNumber;
 		consultation.memberName = PrepString(memberName);
 		consultation.serviceCode = serviceCode;
-		consultation.fee = PrepString(fee);
+		consultation.fee = fee;
 		consultation.providerNumber = providerNumber;
 		consultation.comment = PrepString(comment);
 		return consultation.Database(Action.UPDATE);
