@@ -5,18 +5,20 @@ import java.util.List;
 public class Member extends UserModel {
 
 	public boolean isSuspended;
+	public enum Status {INVALID, VALID, SUSPENDED}
+	public Status status;
 	
 	Member(){
-		isSuspended = false;
+		id = -1;
+		name = "";
+		street = "";
+		city = "";
+		state = "";
+		zip = "";
+		isSuspended = true;
+		status = Status.INVALID;
 	}
-	
-	/**Add, Delete, or Update this Member in the database. Or check to see if 
-	 * this Member is already in the database.
-	 * @param action tells the method whether to add, delete, update, or check 
-	 * if the Member is in the database.
-	 * @return Depending on the argument, returns true if Member is 
-	 * successfully added, deleted, updated, or found in the Member database.
-	 */
+	/// Logic for adding, deleting, updating, or finding this member
 	@Override
 	public Boolean Database(Action action) {
 		Boolean response = false;
@@ -32,35 +34,19 @@ public class Member extends UserModel {
 		return response;
 	}
 	
-
-	/**Searches the member database for an object with a matching id.
-	 * @param id of member to find in the database
-	 * @return A copy of the member in the database that matches the id arg. 
-	 * If a match is not found, an empty Member is returned with id = -1.
-	 */
+	/// Searches the memberDB database for an object with a matching id.
+	/// Returns a copy of the meember found. If a matching member is not found, 
+	/// then a member object with id = -1 is returned
 	@Override
 	public Member Get(int id) {
 		return db.GetMember(id);
 	}
 	
-	/**
-	 * @return An unmodifiable list of all members in the member database.
-	 */
+	/// Returns an unmodifiable list of all members in the memberDB database
 	public List<Member> GetAll(){
 		return db.AllMembers();
 	}
 	
-	/**
-	 * @param status Set member isSuspended equal to status.
-	 */
-	public void SetSuspension(Boolean status) {
-		isSuspended = status;
-		db.SetMemberSuspension(id, status);
-	}
-	
-	/**Prints all Member variables to the console, 
-	 * formatting specific to a Provider type.
-	 */
 	@Override
 	public void Print() {
 		System.out.println();

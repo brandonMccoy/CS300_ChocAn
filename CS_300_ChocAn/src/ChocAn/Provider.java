@@ -4,13 +4,18 @@ import java.util.List;
 
 public class Provider extends UserModel {
 
-	/**Add, Delete, or Update this Provider in the database. Or check to see if 
-	 * this Provider is already in the database.
-	 * @param action tells the method whether to add, delete, update, or check 
-	 * if the Provider is in the database.
-	 * @return Depending on the argument, returns true if Provider is 
-	 * successfully added, deleted, updated, or found in the provider database.
-	 */
+	Provider(){
+		id = -1;
+		name = "";
+		street = "";
+		city = "";
+		state = "";
+		zip = "";
+	}
+	
+	/// Logic for adding, deleting, updating, or finding this provider
+	/// Returns true if Provider is successfully added, deleted, or updated in the memberDB database.
+	/// Returns true if this Provider is found in the providerDB database.
 	@Override
 	public Boolean Database(Action action) {
 		Boolean response = false;
@@ -26,26 +31,19 @@ public class Provider extends UserModel {
 		return response;
 	}
 	
-	/**Searches the provider database for an object with a matching id.
-	 * @param id of the Provider to locate in the database.
-	 * @return A copy of the Provider found. If a matching Provider is not 
-	 * found, then a Provider object with id = -1 is returned.
-	 */
+	/// Searches the providerDB database for an object with a matching id.
+	/// Returns a copy of the Provider found. If a matching Provider is not found, 
+	/// then a Provider object with id = -1 is returned
 	@Override
 	public Provider Get(int id) {
 		return db.GetProvider(id);
 	}
 	
-	/**
-	 * @return An unmodifiable list of all providers in the provider database.
-	 */
+	/// Returns an unmodifiable list of all providers in the providerDB database
 	public List<Provider> GetAll(){
 		return db.AllProviders();
 	}
 
-	/**Prints all Provider variables to the console, 
-	 * formatting specific to a Provider type.
-	 */
 	@Override
 	public void Print() {
 		System.out.println();
@@ -54,4 +52,3 @@ public class Provider extends UserModel {
 		super.Print();
 	}
 }
-
