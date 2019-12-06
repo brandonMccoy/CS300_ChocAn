@@ -547,4 +547,16 @@ public class Database {
 		
 		return null;
 	}
+	/**Update the member's suspension status.
+	* @return true if members isSuspended status is updated, false if member could not be located in the database.
+	*/
+	public Boolean SetMemberSuspension(int id, Boolean status) {
+	for(int i = 0; i < memberDB.size(); i++) {
+	if(memberDB.get(i).id == id) {
+		memberDB.get(0).isSuspended = status;
+		return true;
+	}
+	}
+		return false;
+	}
 }
