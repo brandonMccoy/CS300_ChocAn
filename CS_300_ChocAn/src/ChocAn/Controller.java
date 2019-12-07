@@ -313,6 +313,11 @@ public class Controller {
 		return service.GetServiceCode(name);
 	}
 	
+	public static void WriteAllToDisk(){
+		Service service = new Service();
+		service.WriteAllToDisk();
+	}
+	
 	private static String PrepString(String str) {
 		String newString = str;
 		newString = newString.replaceAll("[^a-zA-Z0-9\\s+]", "");
