@@ -257,8 +257,10 @@ public class View {
     public static void Start()
     {
         Scanner input = new Scanner(System.in);
-        Controller Controller = new Controller();
-        ReportGenerator ReportGenerator = new ReportGenerator();
+        
+        // This service object will start the Database
+        Service service = new Service();
+        
         char response;
         do {
 
