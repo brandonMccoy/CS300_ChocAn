@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.*;
 import java.util.Collections;
@@ -23,9 +24,9 @@ public class Database {
 	
 	Database(){
 		// Fill memberDB with seed data
-      	BufferedReader reader = null;
-		 
-		String filename = "CS300_ChocAn-master\\CS_300_ChocAn\\src\\ChocAn\\memberDB.csv";
+		  BufferedReader reader = null;
+		File file = new File("src\\ChocAn\\memberDB.csv");
+		String filename = file.getAbsolutePath();
 		String line = "";
 		String cvsSplitBy = ",";
 		Member new_member = null;
@@ -66,8 +67,9 @@ public class Database {
 		}
 		// Fill providerDB with seed data
 		reader = null;
-		 
-		filename = "CS300_ChocAn-master\\CS_300_ChocAn\\src\\ChocAn\\providerDB.csv";
+		
+		file = new File("src\\ChocAn\\providerDB.csv");
+		filename = file.getAbsolutePath();
 		line = "";
 		cvsSplitBy = ",";
 		Provider new_provider = null;
@@ -104,8 +106,8 @@ public class Database {
 		}
 		// Fill Service list with names and corresponding codes
 		reader = null;
-		 
-		filename = "CS300_ChocAn-master\\CS_300_ChocAn\\src\\ChocAn\\servicesDB.csv";
+		file = new File("src\\ChocAn\\serviceDB.csv");
+		filename = file.getAbsolutePath();
 		line = "";
 		cvsSplitBy = ",";
 		Service new_service = null;
@@ -139,8 +141,8 @@ public class Database {
 		}
 		// Fill ConsulLog with seed member visit data
 		reader = null;
-		 
-		filename = "CS300_ChocAn-master\\CS_300_ChocAn\\src\\ChocAn\\consultationDB.csv";
+		file = new File("src\\ChocAn\\consultationDB.csv");
+		filename = file.getAbsolutePath();
 		line = "";
 		cvsSplitBy = ",";
 		DateTimeFormatter formatter;
@@ -155,7 +157,7 @@ public class Database {
 				new_consultation.id = Integer.parseInt(field[0]);
 				formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 				new_consultation.serviceDate = LocalDate.parse(field[1],formatter);
-				formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+				formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:m:ss");
 				new_consultation.currentDateTime = LocalDateTime.parse(field[2],formatter);
 				new_consultation.memberNumber = Integer.parseInt(field[3]);
 				new_consultation.serviceCode = Integer.parseInt(field[4]);
@@ -183,7 +185,8 @@ public class Database {
 	
 	public void WriteAllToDisk()
 	{
-		String file_out = "CS300_ChocAn-master\\CS_300_ChocAn\\src\\ChocAn\\memberDB.csv";
+		File file = new File("src\\ChocAn\\memberDB.csv");
+		String file_out = file.getAbsolutePath();
 		try
 		{
 		    BufferedWriter write_out = new BufferedWriter(new FileWriter(file_out));
@@ -213,7 +216,8 @@ public class Database {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		file_out = "CS300_ChocAn-master\\CS_300_ChocAn\\src\\ChocAn\\providerDB.csv";
+		file = new File("src\\ChocAn\\providerDB.csv");
+		file_out = file.getAbsolutePath();
 		try
 		{
 		    BufferedWriter write_out = new BufferedWriter(new FileWriter(file_out));
@@ -241,7 +245,8 @@ public class Database {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		file_out = "CS300_ChocAn-master\\CS_300_ChocAn\\src\\ChocAn\\servicesDB.csv";
+		file = new File("src\\ChocAn\\serviceDB.csv");
+		file_out = file.getAbsolutePath();
 		try
 		{
 		    BufferedWriter write_out = new BufferedWriter(new FileWriter(file_out));
@@ -261,7 +266,8 @@ public class Database {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		file_out = "CS300_ChocAn-master\\CS_300_ChocAn\\src\\ChocAn\\consultationDB.csv";
+		file = new File("src\\ChocAn\\consultationDB.csv");
+		file_out = file.getAbsolutePath();
 		try
 		{
 		    BufferedWriter write_out = new BufferedWriter(new FileWriter(file_out));
