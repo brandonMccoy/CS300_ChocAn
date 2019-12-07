@@ -25,7 +25,7 @@ public class Database {
 	Database(){
 		// Fill memberDB with seed data
 		  BufferedReader reader = null;
-		File file = new File("src\\ChocAn\\memberDB.csv");
+		File file = new File("CS_300_ChocAn\\src\\ChocAn\\memberDB.csv");
 		String filename = file.getAbsolutePath();
 		String line = "";
 		String cvsSplitBy = ",";
@@ -68,7 +68,7 @@ public class Database {
 		// Fill providerDB with seed data
 		reader = null;
 		
-		file = new File("src\\ChocAn\\providerDB.csv");
+		file = new File("CS_300_ChocAn\\src\\ChocAn\\providerDB.csv");
 		filename = file.getAbsolutePath();
 		line = "";
 		cvsSplitBy = ",";
@@ -106,7 +106,7 @@ public class Database {
 		}
 		// Fill Service list with names and corresponding codes
 		reader = null;
-		file = new File("src\\ChocAn\\serviceDB.csv");
+		file = new File("CS_300_ChocAn\\src\\ChocAn\\serviceDB.csv");
 		filename = file.getAbsolutePath();
 		line = "";
 		cvsSplitBy = ",";
@@ -141,7 +141,7 @@ public class Database {
 		}
 		// Fill ConsulLog with seed member visit data
 		reader = null;
-		file = new File("src\\ChocAn\\consultationDB.csv");
+		file = new File("CS_300_ChocAn\\src\\ChocAn\\consultationDB.csv");
 		filename = file.getAbsolutePath();
 		line = "";
 		cvsSplitBy = ",";
@@ -157,7 +157,7 @@ public class Database {
 				new_consultation.id = Integer.parseInt(field[0]);
 				formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 				new_consultation.serviceDate = LocalDate.parse(field[1],formatter);
-				formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:m:ss");
+				formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:m:ss");
 				new_consultation.currentDateTime = LocalDateTime.parse(field[2],formatter);
 				new_consultation.memberNumber = Integer.parseInt(field[3]);
 				new_consultation.serviceCode = Integer.parseInt(field[4]);
@@ -185,7 +185,7 @@ public class Database {
 	
 	public void WriteAllToDisk()
 	{
-		File file = new File("src\\ChocAn\\memberDB.csv");
+		File file = new File("CS_300_ChocAn\\src\\ChocAn\\memberDB.csv");
 		String file_out = file.getAbsolutePath();
 		try
 		{
@@ -216,7 +216,7 @@ public class Database {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		file = new File("src\\ChocAn\\providerDB.csv");
+		file = new File("CS_300_ChocAn\\src\\ChocAn\\providerDB.csv");
 		file_out = file.getAbsolutePath();
 		try
 		{
@@ -245,7 +245,7 @@ public class Database {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		file = new File("src\\ChocAn\\serviceDB.csv");
+		file = new File("CS_300_ChocAn\\src\\ChocAn\\serviceDB.csv");
 		file_out = file.getAbsolutePath();
 		try
 		{
@@ -266,7 +266,7 @@ public class Database {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		file = new File("src\\ChocAn\\consultationDB.csv");
+		file = new File("CS_300_ChocAn\\src\\ChocAn\\consultationDB.csv");
 		file_out = file.getAbsolutePath();
 		try
 		{
