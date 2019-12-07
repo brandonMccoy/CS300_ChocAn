@@ -93,8 +93,7 @@ public class Consultation implements IModel {
 		System.out.println("Fee: $" + fee);
 		System.out.println("Member Name: " + memberName);
 		System.out.println("Provider Number: " + providerNumber);
-		if(!comment.isBlank())
-			System.out.println("Comment: " + comment);
+		//if(!comment.isBlank())
+			//System.out.println("Comment: " + comment);
 	}
 }
-
