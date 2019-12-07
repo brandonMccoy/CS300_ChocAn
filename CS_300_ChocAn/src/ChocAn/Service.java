@@ -66,6 +66,10 @@ public class Service implements IModel {
 	public int GetServiceCode(String serviceName) {
 		return db.GetServiceCode(serviceName);
 	}
+	
+	public void WriteAllToDisk() {
+		db.WriteAllToDisk();
+	}
 
 	/**Prints all Service variables to the console, 
 	 * formatting specific to a Service type.
