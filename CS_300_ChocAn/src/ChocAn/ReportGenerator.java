@@ -36,6 +36,9 @@ public class ReportGenerator
 
 	File EFTfile = new File("CS_300_ChocAn\\src\\EFT_report");
 	String EFTdest = EFTfile.getAbsolutePath();
+	
+	File Account_file = new File("CS_300_ChocAn\\src\\AccountSummary.txt");
+	String Account_dest=  Account_file.getAbsolutePath();
 
 	File Member_database = new File("CS_300_ChocAn\\src\\ChocAn\\memberDB.csv");
 	String member_path = Member_database.getAbsolutePath();
@@ -340,7 +343,7 @@ public class ReportGenerator
                 int day = cal.get(Calendar.DAY_OF_MONTH);
                 int year = cal.get(Calendar.YEAR);
 
-                File file = new File(report.EFTdest);
+                File file = new File(report.Account_dest);
 
                 if (!file.exists())
                     file.createNewFile();
