@@ -28,23 +28,23 @@ public class ReportGenerator
 	//get the file paths for the database and output files
 	//_________________________________________________________
 
-	File Memberfile = new File("CS_300_ChocAn/MemberReport.txt");
+	File Memberfile = new File("CS_300_ChocAn\\src\\ChocAn\\MemberReport.txt");
 	String Memberdest = Memberfile.getAbsolutePath();
 
-	File Providerfile = new File("CS_300_ChocAn/ProviderReport.txt");
+	File Providerfile = new File("CS_300_ChocAn\\ChocAn\\ProviderReport.txt");
 	String Providerdest = Providerfile.getAbsolutePath();
 
-	File EFTfile = new File("CS_300_ChocAn/EFT_report");
+	File EFTfile = new File("CS_300_ChocAn\\src\\EFT_report");
 	String EFTdest = EFTfile.getAbsolutePath();
 
-	File Member_database = new File("CS_300_ChocAn/memberDB.csv");
+	File Member_database = new File("CS_300_ChocAn\\src\\ChocAn\\memberDB.csv");
 	String member_path = Member_database.getAbsolutePath();
 
-	File Provider_database = new File("CS_300_ChocAn/providerDB.csv");
+	File Provider_database = new File("CS_300_ChocAn\\src\\ChocAn\\providerDB.csv");
 	String provider_path = Provider_database.getAbsolutePath();
 
 
-	File EFT_database = new File("CS_300_ChocAn/EFTDB.csv");
+	File EFT_database = new File("CS_300_ChocAn\\src\\ChocAn\\EFTDB.csv");
 	String EFT_path = EFT_database.getAbsolutePath();
    //_______________________________________________________________________________
 
@@ -312,7 +312,7 @@ public class ReportGenerator
 		{
 			for(int j = 0; j<database.consultationDB.size();++j)
 			{
-				consultation_ar[(Integer.parseInt(String.valueOf(database.consultationDB.get(i).providerNumber)))] += String.valueOf(database.consultationDB.get(j).fee))
+				consultation_ar[(Integer.parseInt(String.valueOf(database.consultationDB.get(i).providerNumber)))] += String.valueOf(database.consultationDB.get(j).fee);
 
 				consultation_number[(Integer.parseInt(String.valueOf(database.consultationDB.get(i).providerNumber)))] +=1;
 
@@ -321,7 +321,7 @@ public class ReportGenerator
 
 		}
 		int num_of_providers= 0;
-		for(int k = 0; k<100000;++k)
+		for(int k = 0; k<database.consultationDB.size();++k)
 		{
 			if(Integer.parseInt(String.valueOf(consultation_number[(Integer.parseInt(String.valueOf(database.consultationDB.get(k).providerNumber)))]))>0)
 			{
@@ -359,7 +359,7 @@ public class ReportGenerator
 				}
 
 				bw.newLine();
-                bw.write(String.format("# of providers = %d",num_of_providers);
+                bw.write(String.format("# of providers = %d",num_of_providers));
                 bw.newLine();
                 bw.write(String.format("# of consultations = %d",database.consultationDB.size()));
 
@@ -452,4 +452,3 @@ public class ReportGenerator
 			}
 		}
 	}
-}
