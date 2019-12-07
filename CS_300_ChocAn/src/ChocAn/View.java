@@ -279,6 +279,9 @@ public class View {
             }
         } while (response != '0');
         testFunc();
+        
+        Controller.WriteAllToDisk();
+        
         return;
     }
 }
