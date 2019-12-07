@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.File;
 
+
 /*
  * This class methods were written based off of what I thought we probably need,
  * but it hasn't been thought out
@@ -42,13 +43,14 @@ public class ReportGenerator
 	File Provider_database = new File("CS_300_ChocAn/providerDB.csv");
 	String provider_path = Provider_database.getAbsolutePath();
 
+
 	File EFT_database = new File("CS_300_ChocAn/EFTDB.csv");
 	String EFT_path = EFT_database.getAbsolutePath();
    //_______________________________________________________________________________
 
 	enum ReportType
 	{
-		ALL, MEMBER, PROVIDER, EFT
+		ALL, MEMBER, PROVIDER, ACCOUNT_PAYABLE,EFT
 	}
 
 	;
@@ -82,6 +84,14 @@ public class ReportGenerator
 					e.printStackTrace();
 				}
 				break;
+			case ACCOUNT_PAYABLE:
+                try
+                {
+                    RunAccountSummary(id);
+                }catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
 			case EFT:
 				try
 				{
@@ -153,37 +163,44 @@ public class ReportGenerator
 
 			}
 
+
 		}
-
-		try
+		if(report.u_id != id)
 		{
-			Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Los_Angeles"));
-			int month = cal.get(Calendar.MONTH);
-			int day = cal.get(Calendar.DAY_OF_MONTH);
-			int year = cal.get(Calendar.YEAR);
-
-			File file = new File(report.Memberdest);
-
-			if (!file.exists())
-				file.createNewFile();
-
-			FileWriter fw = new FileWriter(file.getAbsoluteFile());
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(String.format("ChocAn                                  Member Report                           %d/%d/%d  ",month,day,year));
-			bw.newLine();
-			bw.write("_______________________________________________________________________________________________________________");
-			bw.newLine();
-			bw.newLine();
-			bw.write(" ID #          Member Name                Member Address              City      State       Zip    ");
-			bw.newLine();
-			bw.write("_______________________________________________________________________________________________________________");
-			bw.newLine();
-			bw.write(String.format("%d          %s                         %s                  %s     %s     %s ",report.u_id,report.u_name,report.u_address,report.u_city,report.u_state,report.u_zip));
-			bw.close();
-
-		} catch (IOException e)
+			System.out.println(String.format("Member with ID: %d could not be found", id));
+		}
+		else
 		{
-			e.printStackTrace();
+			try
+			{
+				Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Los_Angeles"));
+				int month = cal.get(Calendar.MONTH);
+				int day = cal.get(Calendar.DAY_OF_MONTH);
+				int year = cal.get(Calendar.YEAR);
+
+				File file = new File(report.Memberdest);
+
+				if (!file.exists())
+					file.createNewFile();
+
+				FileWriter fw = new FileWriter(file.getAbsoluteFile());
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write(String.format("ChocAn                                  Member Report                           %d/%d/%d  ", month, day, year));
+				bw.newLine();
+				bw.write("_______________________________________________________________________________________________________________");
+				bw.newLine();
+				bw.newLine();
+				bw.write(" ID #          Member Name                Member Address              City      State       Zip    ");
+				bw.newLine();
+				bw.write("_______________________________________________________________________________________________________________");
+				bw.newLine();
+				bw.write(String.format("%d          %s                         %s                  %s     %s     %s ", report.u_id, report.u_name, report.u_address, report.u_city, report.u_state, report.u_zip));
+				bw.close();
+
+			} catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 
 
@@ -239,43 +256,120 @@ public class ReportGenerator
 			}
 
 		}
-
-		try
+		if(report.u_id != id)
+		{
+			System.out.println(String.format("Member with ID: %d could not be found", id));
+		}
+		else
 		{
 
+			try
+			{
 
-			File file = new File(report.Providerdest);
 
-			if (!file.exists())
-				file.createNewFile();
+				File file = new File(report.Providerdest);
 
-			Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Los_Angeles"));
-			int month = cal.get(Calendar.MONTH);
-			int day = cal.get(Calendar.DAY_OF_MONTH);
-			int year = cal.get(Calendar.YEAR);
+				if (!file.exists())
+					file.createNewFile();
 
-			FileWriter fw = new FileWriter(file.getAbsoluteFile());
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(String.format("ChocAn                                Provider Report                                      %d/%d/%d  ",month,day,year));
-			bw.newLine();
-			bw.write("_______________________________________________________________________________________________________________");
-			bw.newLine();
-			bw.newLine();
-			bw.write(" ID #          Provider Name             Provider Address              City      State       Zip    ");
-			bw.newLine();
-			bw.write("_______________________________________________________________________________________________________________");
-			bw.newLine();
-			bw.write(String.format("%d          %s                         %s                  %s     %s     %s ",report.u_id,report.u_name,report.u_address,report.u_city,report.u_state,report.u_zip));
+				Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Los_Angeles"));
+				int month = cal.get(Calendar.MONTH);
+				int day = cal.get(Calendar.DAY_OF_MONTH);
+				int year = cal.get(Calendar.YEAR);
 
-			bw.close();
+				FileWriter fw = new FileWriter(file.getAbsoluteFile());
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write(String.format("ChocAn                                Provider Report                                      %d/%d/%d  ", month, day, year));
+				bw.newLine();
+				bw.write("_______________________________________________________________________________________________________________");
+				bw.newLine();
+				bw.newLine();
+				bw.write(" ID #          Provider Name             Provider Address              City      State       Zip    ");
+				bw.newLine();
+				bw.write("_______________________________________________________________________________________________________________");
+				bw.newLine();
+				bw.write(String.format("%d          %s                         %s                  %s     %s     %s ", report.u_id, report.u_name, report.u_address, report.u_city, report.u_state, report.u_zip));
 
-		} catch (IOException e)
-		{
-			e.printStackTrace();
+				bw.close();
+
+			} catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 
 
 	}
+
+	private static void RunAccountSummary(int id) throws IOException
+	{
+
+		Database database = new Database();
+		ReportGenerator report = new ReportGenerator();
+		String consultation_ar[] = new String[1000000];
+		String consultation_number[] = new String [1000000];
+		for(int i =0; i< database.consultationDB.size();++i)
+		{
+			for(int j = 0; j<database.consultationDB.size();++j)
+			{
+				consultation_ar[(Integer.parseInt(String.valueOf(database.consultationDB.get(i).providerNumber)))] += String.valueOf(database.consultationDB.get(j).fee))
+
+				consultation_number[(Integer.parseInt(String.valueOf(database.consultationDB.get(i).providerNumber)))] +=1;
+
+
+			}
+
+		}
+		int num_of_providers= 0;
+		for(int k = 0; k<100000;++k)
+		{
+			if(Integer.parseInt(String.valueOf(consultation_number[(Integer.parseInt(String.valueOf(database.consultationDB.get(k).providerNumber)))]))>0)
+			{
+				++num_of_providers;
+
+			}
+		}
+
+
+
+			try
+            {
+
+                Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Los_Angeles"));
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                int year = cal.get(Calendar.YEAR);
+
+                File file = new File(report.EFTdest);
+
+                if (!file.exists())
+                    file.createNewFile();
+
+                FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                BufferedWriter bw = new BufferedWriter(fw);
+
+                bw.write(String.format("ChocAn                                Account Summary                                      %d/%d/%d  ",month,day,year));
+                bw.newLine();
+                bw.write(" ID #          Amount Owed             ");
+                bw.newLine();
+                for(int i = 0; i< database.consultationDB.size();++i)
+				{
+                bw.write(String.format("%s              %s",String.valueOf(database.consultationDB.get(i).memberNumber),consultation_ar[(Integer.parseInt(String.valueOf(database.consultationDB.get(i).providerNumber)))]));
+
+				}
+
+				bw.newLine();
+                bw.write(String.format("# of providers = %d",num_of_providers);
+                bw.newLine();
+                bw.write(String.format("# of consultations = %d",database.consultationDB.size()));
+
+
+            }catch(IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
 
 
 	private static void RunEFTSummary(int id) throws IOException
@@ -316,41 +410,46 @@ public class ReportGenerator
 
 		}
 
-		try
+		if (report.u_id != id)
+		{
+			System.out.println(String.format("Member with ID: %d could not be found", id));
+		} else
 		{
 
-			Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Los_Angeles"));
-			int month = cal.get(Calendar.MONTH);
-			int day = cal.get(Calendar.DAY_OF_MONTH);
-			int year = cal.get(Calendar.YEAR);
+			try
+			{
 
-			File file = new File(report.EFTdest);
+				Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Los_Angeles"));
+				int month = cal.get(Calendar.MONTH);
+				int day = cal.get(Calendar.DAY_OF_MONTH);
+				int year = cal.get(Calendar.YEAR);
 
-			if (!file.exists())
-				file.createNewFile();
+				File file = new File(report.EFTdest);
 
-			FileWriter fw = new FileWriter(file.getAbsoluteFile());
-			BufferedWriter bw = new BufferedWriter(fw);
+				if (!file.exists())
+					file.createNewFile();
 
-			bw.write(String.format("ChocAn                                EFT Summary                                      %d/%d/%d  ",month,day,year));
-			bw.newLine();
-			bw.write(" ID #          Provider Name             ");
-			bw.newLine();
-			bw.write(String.valueOf(report.u_id));
-			bw.write("                 ");
-			bw.write(report.u_name);
-			bw.write("             ");
-			bw.newLine();
-			bw.newLine();
-			bw.write(String.format("Amount to be transfered : %s",report.u_funds));
-			bw.close();
+				FileWriter fw = new FileWriter(file.getAbsoluteFile());
+				BufferedWriter bw = new BufferedWriter(fw);
+
+				bw.write(String.format("ChocAn                                EFT Summary                                      %d/%d/%d  ", month, day, year));
+				bw.newLine();
+				bw.write(" ID #          Provider Name             ");
+				bw.newLine();
+				bw.write(String.valueOf(report.u_id));
+				bw.write("                 ");
+				bw.write(report.u_name);
+				bw.write("             ");
+				bw.newLine();
+				bw.newLine();
+				bw.write(String.format("Amount to be transfered : %s", report.u_funds));
+				bw.close();
 
 
-	}catch(IOException e)
-		{
-			e.printStackTrace();
-		}
+			} catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 	}
-
-	
+}
